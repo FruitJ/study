@@ -23,5 +23,23 @@ void (function () {
     }
     Biology({ name: 'tigger' }); // { name: 'tigger' }
     Biology({}); // {}
-    Biology({ age: 21 }); // { age: 21 } 实际上最好不要这么干，因为本身接口就没有提供
+    Biology({ age: 21 }); // { age: 21 } 实际上最好不要这么干，因为本身接口就没有提供对应的属性
+    var obj = {
+        name: 'FruitJ',
+        age: 23,
+        email: {
+            qq: '1848661762@qq.com',
+            xl: 'ljcd123@sina.com',
+        },
+    };
+    console.log(obj);
+    var vipPerson = {
+        isVip: true,
+        name: "Alice",
+        hobby: "运动",
+        handle: function (param) {
+            return param + " - XXY";
+        }
+    };
+    console.log(vipPerson); // { isVip: true, name: 'Alice', hobby: '运动', handle: [Function: handle] }
 })();

@@ -44,6 +44,51 @@ void(() => {
 
     Biology({ name: 'tigger' }); // { name: 'tigger' }
     Biology({}); // {}
-    Biology({age: 21} as Animal); // { age: 21 } 实际上最好不要这么干，因为本身接口就没有提供
+    Biology({age: 21} as Animal); // { age: 21 } 实际上最好不要这么干，因为本身接口就没有提供对应的属性
  
+    // 可索引类型【对于某个字段的取值不确定数量的】
+    interface Email {
+        [emial: string]: string,
+    }
+    interface Botany {
+        name: string,
+        age: number,
+        email: Email,
+    }
+
+    let obj: Botany = {
+        name: 'FruitJ',
+        age: 23,
+        email: {
+            qq: '1848661762@qq.com',
+            xl: 'ljcd123@sina.com',
+        },
+    };
+
+    console.log(obj);
+    /* 
+        {
+            name: 'FruitJ',
+            age: 23,
+            email: { qq: '1848661762@qq.com', xl: 'ljcd123@sina.com' }
+        }
+    */
+
+    // 继承接口【使用场景基本上是对已有类型的扩展】
+    interface VipUser extends User {
+        isVip: boolean,
+    }
+
+    let vipPerson: VipUser = {
+        isVip: true,
+        name: "Alice",
+        hobby: "运动",
+        handle(param) {
+
+            return `${ param } - XXY`;
+        }
+    };
+
+    console.log(vipPerson); // { isVip: true, name: 'Alice', hobby: '运动', handle: [Function: handle] }
+    
 })();
